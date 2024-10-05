@@ -6,13 +6,50 @@ import DialogBox from '../components/DialogBox.astro';
 
 <Layout title="Welcome to Astro.">
 	<div class="flex items-end h-screen ">
-		<DialogBox 
-		pregunta="Quieres mejorar el entorno natural de una zona con el objetivo de preservar el ecosistema. ¿Qué decides hacer?"
+	<DialogBox 
+		pregunta="Pregunta inicial. ¿Qué opción eliges?" 
+		id="dialog-root" 
 		opciones={[
-			{ letra: "A", texto: "Aumentar la cantidad de árboles y plantas en la zona." },
-			{ letra: "B", texto: "Consumir problemas y más problemas" },
-			{ letra: "C", texto: "Añadiendo opciones opciones opciones " }
-		]}
-		/>
+		{ letra: "A", texto: "Opción A" },
+		{ letra: "B", texto: "Opción B" }
+		]} />
+	<DialogBox 
+		pregunta="Pregunta secundaría de A" 
+		id="dialog-A" 
+		opciones={[
+		{ letra: "AA", texto: "Opción A-A" },
+		{ letra: "AB", texto: "Opción A-B" }
+		]} />
+	<DialogBox 
+		pregunta="Pregunta secundaría de B" 
+		id="dialog-B" 
+		opciones={[
+		{ letra: "BA", texto: "Opción B-A" },
+		{ letra: "BB", texto: "Opción B-B" }
+		]} />
+	<DialogBox 
+		pregunta="Pregunta terciaria de AB" 
+		id="dialog-AB" 
+		opciones={[
+		{ letra: "ABA", texto: "Opción A-B-A" },
+		{ letra: "ABB", texto: "Opción A-B-B" }
+		]} />
 	</div>
 </Layout>
+<script is:inline  >
+		//Inicialmente todos se ocultan menos el root
+		initialDialog = document.getElementById('dialog-root');
+		document.querySelectorAll('[id^="dialog-"]').forEach((dialog) => {
+      if (dialog !== initialDialog) {
+        dialog.classList.add('hidden'); 
+      }
+    });
+		//Si se selecciona uno se muestra el siguiente en base al texto de la opción
+	 document.addEventListener('showNextDialog', (event) => {
+		console.log("se marco tal opción : "+event.detail.selectedOption)
+		nextDialog = document.getElementById(`dialog-${event.detail.selectedOption}`);
+		console.log(nextDialog)
+		nextDialog.classList.remove('hidden');
+    nextDialog.classList.add('block'); 
+	 })
+</script>

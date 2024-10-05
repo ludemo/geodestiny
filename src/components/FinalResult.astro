@@ -1,0 +1,7 @@
+---
+const { id, titulo, mensaje} = Astro.props;
+---
+<div id={id} class="hidden m-10 p-5 bg-green-100 border-2 border-green-500 rounded-xl text-center">
+  <h2 class="text-3xl font-bold mb-4">{titulo}</h2>
+  <p class="text-xl mb-4">{mensaje}</p>
+</div>

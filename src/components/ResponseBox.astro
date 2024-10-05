@@ -4,7 +4,7 @@ const { opcion, texto } = Astro.props;
 <div class="relative">
 <!-- Botón -->
 <button id={`toggle-dialog-${opcion}`}class="hover:bg-orange-600 bg-orange-500 text-white border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
-  {`${opcion}`}
+  {opcion.slice(-1)}
 </button>
 <!-- Nube de diálogo (rectangular) -->
 <div id={`dialog-box-${opcion}`} class="hidden absolute bottom-16 bg-orange-500 text-white border-2 border-white rounded-lg p-4  w-[600px] text-center">
@@ -24,6 +24,10 @@ const { opcion, texto } = Astro.props;
       }
     });
     dialogBox.classList.toggle('hidden');
+
+    // Emitir un evento personalizado cuando se selecciona una opción
+    const event = new CustomEvent('optionSelected', { detail: { opcion } });
+    document.dispatchEvent(event);
   });
 
 </script>
