@@ -1,11 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/tailwind.css';
-
+import DialogBox from '../components/DialogBox.astro';
 ---
 
 <Layout title="Welcome to Astro.">
-	<button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-		¡Clic aquí!
-	</button>
+	<div class="flex items-end h-screen ">
+		<DialogBox 
+		pregunta="Quieres mejorar el entorno natural de una zona con el objetivo de preservar el ecosistema. ¿Qué decides hacer?"
+		opciones={[
+			{ letra: "A", texto: "Aumentar la cantidad de árboles y plantas en la zona." },
+			{ letra: "B", texto: "Consumir problemas y más problemas" },
+			{ letra: "C", texto: "Añadiendo opciones opciones opciones " }
+		]}
+		/>
+	</div>
 </Layout>

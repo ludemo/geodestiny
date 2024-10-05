@@ -1,0 +1,29 @@
+---
+const { opcion, texto } = Astro.props;
+---
+<div class="relative">
+<!-- Botón -->
+<button id={`toggle-dialog-${opcion}`}class="hover:bg-orange-600 bg-orange-500 text-white border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+  {`${opcion}`}
+</button>
+<!-- Nube de diálogo (rectangular) -->
+<div id={`dialog-box-${opcion}`} class="hidden absolute bottom-16 bg-orange-500 text-white border-2 border-white rounded-lg p-4  w-[600px] text-center">
+  <div class="absolute left-1 bottom-[-15px] border-t-[15px] border-white border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent"></div>
+  {`${texto}`}
+  <!-- Triángulo o colita de la nube -->
+</div>
+</div>
+<script is:inline  define:vars={{ opcion }}>
+  const button = document.getElementById(`toggle-dialog-${opcion}`);
+  const dialogBox = document.getElementById(`dialog-box-${opcion}`);
+  //función para abrir y cerrar el diálogo de los demás
+  button.addEventListener('click', () => {
+      document.querySelectorAll('[id^="dialog-box-"]').forEach((box) => {
+      if (box !== dialogBox) {
+        box.classList.add('hidden'); 
+      }
+    });
+    dialogBox.classList.toggle('hidden');
+  });
+
+</script>
