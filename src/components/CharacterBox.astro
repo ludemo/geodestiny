@@ -3,26 +3,26 @@
   class="relative rounded-xl p-7 mb-10 bg-[#FAF9D9] border-4 border-orange-500 w-1/5 h-56"
 >
   <img
-    src="../public/imgs/fox/fox1.png"
-    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-200 ease-in-out"
+    src="/imgs/fox/fox1.png"
+    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-100 ease-in-out"
     alt="Frame 1"
   />
   <img
-    src="../public/imgs/fox/fox2.png"
-    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-200 ease-in-out"
+    src="/imgs/fox/fox2.png"
+    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-100 ease-in-out"
     alt="Frame 2"
   />
   <img
-    src="../public/imgs/fox/fox3.png"
-    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-200 ease-in-out"
+    src="/imgs/fox/fox3.png"
+    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-100 ease-in-out"
     alt="Frame 3"
   />
   <audio
     id="animation-audio"
-    src="../public/audio/Speaking-AnimalCrossing.mp3"
+    src="/audio/Speaking-AnimalCrossing.mp3"
     autoplay></audio>
 </div>
-<audio id="animation-audio" src="../public/audio/Speaking-AnimalCrossing.mp3"></audio>
+<audio id="animation-audio" src="../audio/Speaking-AnimalCrossing.mp3"></audio>
 
 <!-- Botón para iniciar la animación -->
 <button id="start-animation-btn" class="mt-5 px-4 py-2 bg-blue-500 text-white rounded-lg">
@@ -36,8 +36,8 @@
     const frames = document.querySelectorAll(".frame");
     let currentIndex = 0;
     const totalFrames = frames.length;
-    const frameDuration = 200; // Duración de cada frame (milisegundos)
-    const totalAnimationTime = 3000; // Duración total de la animación (3 segundos)
+    const frameDuration = 300; // Duración de cada frame (milisegundos)
+    const totalAnimationTime = 4000; // Duración total de la animación (3 segundos)
     let animationInterval;
 
     // Obtener el audio y afirmar que es un HTMLAudioElement
