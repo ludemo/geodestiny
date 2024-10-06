@@ -61,5 +61,7 @@ document.addEventListener("showNextDialog", (event) => {
 	console.log(nextDialog);
 	nextDialog.classList.remove("hidden");
 	nextDialog.classList.add("block");
+	  // Disparar el evento para iniciar la animación
+		document.dispatchEvent(new CustomEvent("showNextDialog"));
 });
 </script>

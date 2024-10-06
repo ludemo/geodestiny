@@ -24,11 +24,6 @@
 </div>
 <audio id="animation-audio" src="../audio/Speaking-AnimalCrossing.mp3"></audio>
 
-<!-- Botón para iniciar la animación -->
-<button id="start-animation-btn" class="mt-5 px-4 py-2 bg-blue-500 text-white rounded-lg">
-  Iniciar Animación
-</button>
-
 
 <script>
 
@@ -36,9 +31,10 @@
     const frames = document.querySelectorAll(".frame");
     let currentIndex = 0;
     const totalFrames = frames.length;
-    const frameDuration = 300; // Duración de cada frame (milisegundos)
-    const totalAnimationTime = 4000; // Duración total de la animación (3 segundos)
+    const frameDuration = 200; // Duración de cada frame (milisegundos)
+    const totalAnimationTime = 3000; // Duración total de la animación (3 segundos)
     let animationInterval;
+    let animationTimeout;
 
     // Obtener el audio y afirmar que es un HTMLAudioElement
     const audio = document.getElementById(
@@ -58,35 +54,36 @@
       frames[currentIndex].classList.add("opacity-100");
     }
 
+    function stopAnimation() {
+      clearInterval(animationInterval);
+      clearTimeout(animationTimeout);
+
+      frames.forEach((frame) => frame.classList.remove("opacity-100"));
+      frames.forEach((frame) => frame.classList.add("opacity-0"));
+      frames[0].classList.remove("opacity-0");
+      frames[0].classList.add("opacity-100");
+
+      if (audio) {
+        audio.pause();
+      }
+    }
     // Iniciar la animación
     function startAnimation() {
-      // Verificar si el audio existe
+    // Detener cualquier animación en curso
+      stopAnimation(); 
+
       if (audio) {
-        // Reproducir el audio cuando la animación comience
-        audio.currentTime = 0; // Reiniciar el audio al inicio
-        audio.play(); // Reproducir el audio
+        audio.currentTime = 0;
+        audio.play();
       }
 
+      currentIndex = 0;
       animationInterval = setInterval(animate, frameDuration);
 
-      // Detener la animación después de 3 segundos
-      setTimeout(function () {
-        clearInterval(animationInterval);
-
-        // Volver a mostrar la primera imagen (frame1)
-        frames.forEach((frame) => frame.classList.remove("opacity-100"));
-        frames.forEach((frame) => frame.classList.add("opacity-0"));
-        frames[0].classList.remove("opacity-0");
-        frames[0].classList.add("opacity-100");
-
-        // Detener el audio cuando la animación termine
-        if (audio) {
-          audio.pause();
-        }
-      }, totalAnimationTime);
+      animationTimeout = setTimeout(stopAnimation, totalAnimationTime);
     }
-	// Iniciar la animación al hacer clic en el botón
-    document.getElementById('start-animation-btn').addEventListener('click', function() {
+	  // Iniciar la animación cuando aparece un nuevo texto
+    document.addEventListener("showNextDialog", function(event) {
         startAnimation();
     });
 
