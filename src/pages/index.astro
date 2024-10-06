@@ -13,7 +13,21 @@ import CharacterBox from "../components/CharacterBox.astro";
 				<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 512 512"><path fill="currentColor" d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0l17.1 17.2H352c-17.7 0-32 14.3-32 32s14.3 32 32 32h111.9c17.7 0 32-14.3 32-32V80c0-17.7-14.3-32-32-32s-32 14.3-32 32v35.2l-17.5-17.6c-87.5-87.5-229.3-87.5-316.8 0c-24.4 24.4-42 53.1-52.8 83.8c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V432c0 17.7 14.3 32 32 32s32-14.3 32-32v-35.1l17.6 17.5c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1l-17.1-17H160c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4q-2.4 0-4.8.3c-2.4.3-3.1.5-4.6 1"/></svg>
 			</button>
 		</div>
-			
+		<!--Ejemplos de finales, bueno y luego malo solo hay que repetirlo poniendo el id de referencia -->
+		<div id="dialog-ABB" class="absloute flex justify-center items-center ml-auto mr-auto">
+			<img class="absolute h-[700px] w-[800px]" src="/imgs/fox/nube-buena.png" alt="">
+				<span class="absolute w-96 text-black text-center">
+					Aunque logras atraer turistas de lujo y mejorar la economía local, el impacto ambiental del turismo no regulado comienza a dañar el ecosistema. Las instalaciones y la afluencia de visitantes generan más residuos y erosionan las áreas naturales, comprometiendo a largo plazo el entorno que intentaban preservar.
+				</span>
+			</img>
+		</div>	
+		<div id="dialog-ABA" class="absloute flex justify-center items-center ml-auto mr-auto">
+			<img class="absolute h-[550px] w-[950px]" src="/imgs/fox/nube-mala.png" alt="">
+				<span class="absolute w-[450px] h-36 text-white text-center">
+					Aunque logras atraer turistas de lujo y mejorar la economía local, el impacto ambiental del turismo no regulado comienza a dañar el ecosistema. Las instalaciones y la afluencia de visitantes generan más residuos y erosionan las áreas naturales, comprometiendo a largo plazo el entorno que intentaban preservar.
+				</span>
+			</img>
+		</div>	
 		<div class="ml-auto mr-auto w-screen flex  justify-center gap-6">
 			<DialogBox
 				pregunta="Pregunta inicial. ¿Qué opción eliges?"
@@ -23,7 +37,7 @@ import CharacterBox from "../components/CharacterBox.astro";
 					{ letra: "B", texto: "Opción B" },
 				]}
 			/>
-			<DialogBox
+ 			<DialogBox
 				pregunta="Pregunta secundaría de A"
 				id="dialog-A"
 				opciones={[
@@ -46,11 +60,8 @@ import CharacterBox from "../components/CharacterBox.astro";
 					{ letra: "ABA", texto: "Opción A-B-A" },
 					{ letra: "ABB", texto: "Opción A-B-B" },
 				]}
-			/>
+			/> 
 			<CharacterBox />
-			<div id="dialog-ABB" class="text-white">
-				Horror el final es un horror
-			</div>
 		</div>
 	</div>
 </Layout>
