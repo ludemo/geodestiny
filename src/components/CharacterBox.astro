@@ -1,20 +1,20 @@
 <div
   id="character-container"
-  class="relative rounded-xl p-7 mb-10 bg-[#FAF9D9] border-4 border-orange-500 w-1/5 h-56"
+  class="relative rounded-xl p-7 mb-10 bg-[#FAF9D9] border-4 border-orange-500 w-72 h-56"
 >
   <img
-    src="../public/imgs/fox/fox1.png"
-    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-200 ease-in-out"
+    src="/imgs/fox/fox1.png"
+    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-100 ease-in-out"
     alt="Frame 1"
   />
   <img
-    src="../public/imgs/fox/fox2.png"
-    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-200 ease-in-out"
+    src="/imgs/fox/fox2.png"
+    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-100 ease-in-out"
     alt="Frame 2"
   />
   <img
-    src="../public/imgs/fox/fox3.png"
-    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-200 ease-in-out"
+    src="/imgs/fox/fox3.png"
+    class="frame absolute inset-0 w-full h-full opacity-0 transition-opacity duration-100 ease-in-out"
     alt="Frame 3"
   />
   <audio
@@ -28,7 +28,6 @@
   Iniciar Animación
 </button>
 
-
 <script>
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -38,6 +37,7 @@
     const frameDuration = 200; // Duración de cada frame (milisegundos)
     const totalAnimationTime = 3000; // Duración total de la animación (3 segundos)
     let animationInterval;
+    let animationTimeout;
 
     // Obtener el audio y afirmar que es un HTMLAudioElement
     const audio = document.getElementById(
@@ -57,35 +57,36 @@
       frames[currentIndex].classList.add("opacity-100");
     }
 
+    function stopAnimation() {
+      clearInterval(animationInterval);
+      clearTimeout(animationTimeout);
+
+      frames.forEach((frame) => frame.classList.remove("opacity-100"));
+      frames.forEach((frame) => frame.classList.add("opacity-0"));
+      frames[0].classList.remove("opacity-0");
+      frames[0].classList.add("opacity-100");
+
+      if (audio) {
+        audio.pause();
+      }
+    }
     // Iniciar la animación
     function startAnimation() {
-      // Verificar si el audio existe
+    // Detener cualquier animación en curso
+      stopAnimation(); 
+
       if (audio) {
-        // Reproducir el audio cuando la animación comience
-        audio.currentTime = 0; // Reiniciar el audio al inicio
-        audio.play(); // Reproducir el audio
+        audio.currentTime = 0;
+        audio.play();
       }
 
+      currentIndex = 0;
       animationInterval = setInterval(animate, frameDuration);
 
-      // Detener la animación después de 3 segundos
-      setTimeout(function () {
-        clearInterval(animationInterval);
-
-        // Volver a mostrar la primera imagen (frame1)
-        frames.forEach((frame) => frame.classList.remove("opacity-100"));
-        frames.forEach((frame) => frame.classList.add("opacity-0"));
-        frames[0].classList.remove("opacity-0");
-        frames[0].classList.add("opacity-100");
-
-        // Detener el audio cuando la animación termine
-        if (audio) {
-          audio.pause();
-        }
-      }, totalAnimationTime);
+      animationTimeout = setTimeout(stopAnimation, totalAnimationTime);
     }
-	// Iniciar la animación al hacer clic en el botón
-    document.getElementById('start-animation-btn').addEventListener('click', function() {
+	  // Iniciar la animación cuando aparece un nuevo texto
+    document.addEventListener("showNextDialog", function(event) {
         startAnimation();
     });
 

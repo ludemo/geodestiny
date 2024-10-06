@@ -57,7 +57,7 @@ import ResponseBox from './ResponseBox.astro';
       
       aceptarButton.onclick = () => {
         // Ocultar el diálogo actual
-        document.getElementById(id).remove();
+        document.getElementById(id).classList.add('hidden');
         
         // Emitir un evento para mostrar el siguiente diálogo
         const nextDialogEvent = new CustomEvent('showNextDialog', { detail: { selectedOption } });
