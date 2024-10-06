@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/tailwind.css";
 import DialogBox from "../components/DialogBox.astro";
 import CharacterBox from "../components/CharacterBox.astro";
-
+import FinalResult from "../components/FinalResult.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<div class="h-screen flex justify-between flex-col ">
+	<div class="h-screen bg-[url(imgs/default.jpg)] bg-cover bg-center flex justify-between flex-col ">
 		<div class = "flex justify-end mt-10 mr-12 gap-5">
 			<button id = "playButton" onclick="" class="bg-gray-800 hover:bg-gray-900 text-white font-bold w-16 h-16 rounded-full shadow-lg border-4 border-white flex items-center justify-center">
 				<img id="playPauseIcon" src="imgs/icons/volume-x.svg" alt="restart icon" width="45" height="45">
@@ -21,21 +21,19 @@ import CharacterBox from "../components/CharacterBox.astro";
 			</audio>
 		
 		</div>
-		<!--Ejemplos de finales, bueno y luego malo solo hay que repetirlo poniendo el id de referencia -->
-		<div id="dialog-ABB" class="absloute flex justify-center items-center ml-auto mr-auto">
-			<img class="absolute h-[700px] w-[800px]" src="/imgs/fox/nube-buena.png" alt="">
-				<span class="absolute w-96 text-black text-center">
-					Aunque logras atraer turistas de lujo y mejorar la economía local, el impacto ambiental del turismo no regulado comienza a dañar el ecosistema. Las instalaciones y la afluencia de visitantes generan más residuos y erosionan las áreas naturales, comprometiendo a largo plazo el entorno que intentaban preservar.
-				</span>
-			</img>
-		</div>	
-		<div id="dialog-ABA" class="absloute flex justify-center items-center ml-auto mr-auto">
-			<img class="absolute h-[550px] w-[950px]" src="/imgs/fox/nube-mala.png" alt="">
-				<span class="absolute w-[450px] h-36 text-white text-center">
-					Aunque logras atraer turistas de lujo y mejorar la economía local, el impacto ambiental del turismo no regulado comienza a dañar el ecosistema. Las instalaciones y la afluencia de visitantes generan más residuos y erosionan las áreas naturales, comprometiendo a largo plazo el entorno que intentaban preservar.
-				</span>
-			</img>
-		</div>	
+		<!--Espacio para poner todos los finales buenos o malos -->
+		<FinalResult 
+			id="dialog-ABA" 
+			estado="bueno" 
+			mensaje="¡Felicidades! Has llegado a un buen final."
+		/>
+		<FinalResult 
+			id="dialog-ABB" 
+			estado="malo" 
+			mensaje="¡Llegaste a un final malo super malo malo!."
+		/>
+		<!--Fin de los espacios para poner finales buenos o malos -->
+		<!--Espacio para poner todos los posibles caminos -->
 		<div class="ml-auto mr-auto w-screen flex  justify-center gap-6">
 			<DialogBox
 				pregunta="Pregunta inicial. ¿Qué opción eliges?"
