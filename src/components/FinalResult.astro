@@ -1,7 +1,20 @@
 ---
-const { id, titulo, mensaje} = Astro.props;
+const { id, estado, mensaje} = Astro.props;
 ---
-<div id={id} class="hidden m-10 p-5 bg-green-100 border-2 border-green-500 rounded-xl text-center">
-  <h2 class="text-3xl font-bold mb-4">{titulo}</h2>
-  <p class="text-xl mb-4">{mensaje}</p>
-</div>
+{(estado === 'bueno')?(
+  <div id={`${id}`} class="absloute flex justify-center items-center ml-auto mr-auto">
+  <img class="absolute h-[700px] w-[800px]" src={`/imgs/nube-${estado}.png`} alt="">
+    <span class="absolute w-96 text-black text-center">
+      {`${mensaje}`} 
+    </span>
+  </img>
+</div>	
+):(
+<div id={`${id}`} class="absloute flex justify-center items-center ml-auto mr-auto">
+			<img class="absolute h-[550px] w-[950px]" src={`/imgs/nube-${estado}.png`} alt="">
+				<span class="absolute w-[450px] h-36 text-white text-center">
+					{`${mensaje}`} 
+				</span>
+			</img>
+		</div>	
+)}
