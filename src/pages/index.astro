@@ -47,8 +47,7 @@ import FinalResult from "../components/FinalResult.astro";
       mensaje="Sustainable agricultural practices, such as crop rotation, compost use and pesticide reduction, improve soil fertility, promote biodiversity and protect water resources."
       fondo="/imgs/fondo-bueno.jpg"
     />
-	
-	<FinalResult
+    <FinalResult
       id="dialog-ABAA"
       estado="malo"
       mensaje="Blooms can contaminate seafood and fish intended for human consumption, leading to restrictions on the harvesting and marketing of fishery products."
@@ -62,12 +61,46 @@ import FinalResult from "../components/FinalResult.astro";
       fondo="/imgs/fondo-bueno.jpg"
     />
 
+    <FinalResult
+      id="dialog-BAA"
+      estado="bueno"
+      mensaje="The community works together, with “Protect Our Ocean!” flags waving in the wind as they participate in coastal clean-up and reforestation activities. The beach is slowly recovering"
+      fondo="/imgs/fondo-bueno.jpg"
+    />
+
+	<FinalResult
+      id="dialog-BAB"
+      estado="malo"
+      mensaje="The beach is becoming increasingly polluted, and bathers are beginning to avoid it. Fishermen are reporting that fish are disappearing."
+      fondo="/imgs/fondo-malo.jpg"
+    /> 
+
+	<FinalResult
+      id="dialog-BBAA"
+      estado="malo"
+      mensaje="Blooms can contaminate seafood and fish intended for human consumption, leading to restrictions on the harvesting and marketing of fishery products."
+      fondo="/imgs/fondo-malo.jpg"
+    /> 
+	<FinalResult
+      id="dialog-BBAB"
+      estado="bueno"
+      mensaje="Launch awareness campaigns on reducing the use of fertilizers, wastewater treatment and other practices that contribute to eutrophication. The beach is gradually recovering"
+      fondo="/imgs/fondo-bueno.jpg"
+    /> 
+	<FinalResult
+      id="dialog-BBB"
+      estado="bueno"
+      mensaje="Sustainable agricultural practices, such as crop rotation, compost use and pesticide reduction, improve soil fertility, promote biodiversity and protect water resources."
+      fondo="/imgs/fondo-bueno.jpg"
+    /> 
+
 	<FinalResult
 	id="dialog-ABB"
 	estado="bueno"
-	mensaje="You launch awareness campaigns on reducing the use of fertilizers, wastewater treatment and other practices that contribute to eutrophication. The beach is gradually recovering."
+	mensaje="Sustainable agricultural practices, such as crop rotation, compost use and pesticide reduction, improve soil fertility, promote biodiversity and protect water resources."
 	fondo="/imgs/fondo-bueno.jpg"
-  />
+ 	/>
+
     <!--Fin de los espacios para poner finales buenos o malos -->
     <!--Espacio para poner todos los posibles caminos -->
     <div class="ml-auto mr-auto w-screen flex justify-center gap-6">
@@ -88,6 +121,65 @@ import FinalResult from "../components/FinalResult.astro";
         ]}
       />
       <DialogBox
+        pregunta="Pesticides are beginning to affect water and soil"
+        id="dialog-B"
+        opciones={[
+          {
+            letra: "BA",
+            texto:
+              "You don't give it importance, it is more important to take care of the plants",
+          },
+          { letra: "BB", texto: "You stop their usp, risking the crops" },
+        ]}
+      />
+
+	  <DialogBox
+        pregunta="You stop using pesticides on crops but you still have the problem of low crop production."
+        id="dialog-BB"
+        opciones={[
+          {
+            letra: "BBA",
+            texto:
+              "You use nutrient-rich agricultural fertilizers",
+          },
+          { letra: "BBB", texto: "Use crop varieties adapted to local climatic and soil conditions." },
+        ]}
+      />
+
+	  <DialogBox
+        pregunta="You have had a great harvest. However, on a nearby beach this excess of nutrients has caused algae blooms."
+        id="dialog-BBA"
+        opciones={[
+          {
+            letra: "BBAA",
+            texto:
+              "You don't give it importance, algae are plants and they won't do any harm.",
+          },
+          { letra: "BBAB", texto: "You stop using it, even though you will have production problems" },
+        ]}
+      />
+
+
+
+
+
+
+	  <DialogBox
+	  pregunta="Excessive use of pesticides has contaminated water and soil, affecting ecosystems and human health. On a nearby beach, where locals collect shells and enjoy the sea, they notice a strong chemical smell in the water. Suddenly a biologist arrives."
+	  id="dialog-BA"
+	  opciones={[
+		{
+		  letra: "BAA",
+		  texto:
+			"Implement a beach clean-up campaign and conduct regular water quality studies, although this could be expensive",
+		},
+		{ letra: "BAB", texto: "Ignore the smell and continue with traditional fishing, eventually everything will return to normal." },
+	  ]}
+		/>
+
+	
+
+      <DialogBox
         pregunta="The transition to sustainable practices is reducing agricultural production, as soils and crops must adapt"
         id="dialog-A"
         opciones={[
@@ -102,60 +194,64 @@ import FinalResult from "../components/FinalResult.astro";
           },
         ]}
       />
-	  
+
       <DialogBox
         pregunta="You don't use pesticides on crops, but you still have the problem of low crop production."
         id="dialog-AB"
         opciones={[
-          { letra: "ABA", texto: "You use nutrient-rich agricultural fertilizers" },
-          { letra: "ABB", texto: "Using crop varieties adapted to local soil and climatic conditions, taking longer compared to other methods" },
+          {
+            letra: "ABA",
+            texto: "You use nutrient-rich agricultural fertilizers",
+          },
+          {
+            letra: "ABB",
+            texto:
+              "Using crop varieties adapted to local soil and climatic conditions, taking longer compared to other methods",
+          },
         ]}
       />
       <DialogBox
         pregunta="You have had a great harvest. However, on a nearby beach this excess of nutrients has caused algae blooms. "
         id="dialog-ABA"
         opciones={[
-          { letra: "ABAA", texto: "You don't give it importance, algae are plants, they won't do any harm." },
-          { letra: "ABAB", texto: "You stop using it, even though you will have production problems " },
+          {
+            letra: "ABAA",
+            texto:
+              "You don't give it importance, algae are plants, they won't do any harm.",
+          },
+          {
+            letra: "ABAB",
+            texto:
+              "You stop using it, even though you will have production problems ",
+          },
         ]}
       />
 
-
-
-
-	  <DialogBox
-	  pregunta="You don't use pesticides on crops, but you still have the problem of low crop production."
-	  id="dialog-ABB"
-	  opciones={[
-		{ letra: "ABA", texto: "You use nutrient-rich agricultural fertilizers" },
-		{ letra: "ABB", texto: "Using crop varieties adapted to local soil and climatic conditions, taking longer compared to other methods" },
-	  ]}
-	/>
-
-
-
-
-
       <DialogBox
-        pregunta="Pesticides are beginning to affect water and soil"
-        id="dialog-B"
+        pregunta="You don't use pesticides on crops, but you still have the problem of low crop production."
+        id="dialog-ABB"
         opciones={[
           {
-            letra: "BA",
-            texto:
-			"You don't give it importance, it's more important to take care of the plants",
+            letra: "ABBA",
+            texto: "You use nutrient-rich agricultural fertilizers",
           },
-          { letra: "BB", texto: "You stop their usp, risking the crops" },
+          {
+            letra: "ABB",
+            texto:
+              "Using crop varieties adapted to local soil and climatic conditions, taking longer compared to other methods",
+          },
         ]}
       />
-      <DialogBox
+
+    
+      <!-- <DialogBox
         pregunta="Pregunta terciaria de AB"
         id="dialog-AB"
         opciones={[
           { letra: "ABA", texto: "Opción A-B-A" },
           { letra: "ABB", texto: "Opción A-B-B" },
         ]}
-      />
+      /> -->
       <CharacterBox />
     </div>
   </div>
@@ -186,14 +282,14 @@ document.addEventListener("showNextDialog", (event) => {
 	nextDialog = document.getElementById(
 		`dialog-${event.detail.selectedOption}`
 	);
-    nextDialog.classList.remove("hidden");
-    nextDialog.classList.add("block");
-    // Disparar el evento para iniciar la animación
-    document.dispatchEvent(new CustomEvent("showNextDialog"));
-  });
+	nextDialog.classList.remove("hidden");
+	nextDialog.classList.add("block");
+	// Disparar el evento para iniciar la animación
+	document.dispatchEvent(new CustomEvent("showNextDialog"));
+});
 
-  const playPauseButton = document.getElementById("playButton");
-  const audio = document.getElementById("audio");
+const playPauseButton = document.getElementById("playButton");
+const audio = document.getElementById("audio");
   const playPauseIcon = document.getElementById("playPauseIcon");
 
   // Variable para verificar si la música está reproduciéndose
