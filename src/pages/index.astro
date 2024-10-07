@@ -7,71 +7,158 @@ import FinalResult from "../components/FinalResult.astro";
 ---
 
 <Layout title="Geodestiny">
-	<div class="h-screen bg-[url(/imgs/default.jpg)] bg-cover bg-center flex justify-between flex-col ">
-		<div class = "z-50 flex justify-end mt-10 mr-12 gap-5">
-			<button id = "playButton" onclick="" class="bg-gray-800 hover:bg-gray-900 text-white font-bold w-16 h-16 rounded-full shadow-lg border-4 border-white flex items-center justify-center">
-				<img id="playPauseIcon" src="imgs/icons/volume-x.svg" alt="restart icon" width="45" height="45">
-			</button>
-			<button  onclick="reset()" class="bg-gray-800 hover:bg-gray-900 text-white font-bold w-16 h-16 rounded-full shadow-lg border-4 border-white flex items-center justify-center">
-				<img   src="imgs/icons/reload.svg"alt="restart icon" width="45" height="45">
-			</button>
-			<audio id="audio" loop>
-				<source src="songs/ambientalSong.mp3" type="audio/mpeg">
-				Tu navegador no soporta el elemento de audio.
-			</audio>
-		
-		</div>
-		<!--Espacio para poner todos los finales buenos o malos -->
-		<FinalResult 
-			id="dialog-ABA" 
-			estado="bueno" 
-			mensaje="¡Felicidades! Has llegado a un buen final."
-			fondo="/imgs/fondo-bueno.jpg"
-		/>
-		<FinalResult 
-			id="dialog-ABB" 
-			estado="malo" 
-			mensaje="¡Llegaste a un final malo super malo malo!."
-			fondo="/imgs/fondo-malo.jpg"
-		/>
-		<!--Fin de los espacios para poner finales buenos o malos -->
-		<!--Espacio para poner todos los posibles caminos -->
-		<div class="ml-auto mr-auto w-screen flex  justify-center gap-6">
-			<DialogBox
-				pregunta="Pregunta inicial. ¿Qué opción eliges?"
-				id="dialog-root"
-				opciones={[
-					{ letra: "A", texto: "Opción A" },
-					{ letra: "B", texto: "Opción B" },
-				]}
-			/>
- 			<DialogBox
-				pregunta="Pregunta secundaría de A"
-				id="dialog-A"
-				opciones={[
-					{ letra: "AA", texto: "Opción A-A" },
-					{ letra: "AB", texto: "Opción A-B" },
-				]}
-			/>
-			<DialogBox
-				pregunta="Pregunta secundaría de B"
-				id="dialog-B"
-				opciones={[
-					{ letra: "BA", texto: "Opción B-A" },
-					{ letra: "BB", texto: "Opción B-B" },
-				]}
-			/>
-			<DialogBox
-				pregunta="Pregunta terciaria de AB"
-				id="dialog-AB"
-				opciones={[
-					{ letra: "ABA", texto: "Opción A-B-A" },
-					{ letra: "ABB", texto: "Opción A-B-B" },
-				]}
-			/> 
-			<CharacterBox />
-		</div>
-	</div>
+  <div
+    class="h-screen bg-[url(/imgs/landscape.jpg)] bg-cover bg-center flex justify-between flex-col"
+  >
+    <div class="z-50 flex justify-end mt-10 mr-12 gap-5">
+      <button
+        id="playButton"
+        onclick=""
+        class="bg-gray-800 hover:bg-gray-900 text-white font-bold w-16 h-16 rounded-full shadow-lg border-4 border-white flex items-center justify-center"
+      >
+        <img
+          id="playPauseIcon"
+          src="imgs/icons/volume-x.svg"
+          alt="restart icon"
+          width="45"
+          height="45"
+        />
+      </button>
+      <button
+        onclick="reset()"
+        class="bg-gray-800 hover:bg-gray-900 text-white font-bold w-16 h-16 rounded-full shadow-lg border-4 border-white flex items-center justify-center"
+      >
+        <img
+          src="imgs/icons/reload.svg"
+          alt="restart icon"
+          width="45"
+          height="45"
+        />
+      </button>
+      <audio id="audio" loop>
+        <source src="songs/ambientalSong.mp3" type="audio/mpeg" />
+         Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+    <!--Espacio para poner todos los finales buenos o malos -->
+    <FinalResult
+      id="dialog-AA"
+      estado="bueno"
+      mensaje="Sustainable agricultural practices, such as crop rotation, compost use and pesticide reduction, improve soil fertility, promote biodiversity and protect water resources."
+      fondo="/imgs/fondo-bueno.jpg"
+    />
+	
+	<FinalResult
+      id="dialog-ABAA"
+      estado="malo"
+      mensaje="Blooms can contaminate seafood and fish intended for human consumption, leading to restrictions on the harvesting and marketing of fishery products."
+      fondo="/imgs/fondo-malo.jpg"
+    />
+
+    <FinalResult
+      id="dialog-ABAB"
+      estado="bueno"
+      mensaje="You launch awareness campaigns on reducing the use of fertilizers, wastewater treatment and other practices that contribute to eutrophication. The beach is gradually recovering."
+      fondo="/imgs/fondo-bueno.jpg"
+    />
+
+	<FinalResult
+	id="dialog-ABB"
+	estado="bueno"
+	mensaje="You launch awareness campaigns on reducing the use of fertilizers, wastewater treatment and other practices that contribute to eutrophication. The beach is gradually recovering."
+	fondo="/imgs/fondo-bueno.jpg"
+  />
+    <!--Fin de los espacios para poner finales buenos o malos -->
+    <!--Espacio para poner todos los posibles caminos -->
+    <div class="ml-auto mr-auto w-screen flex justify-center gap-6">
+      <DialogBox
+        pregunta="A community meeting takes place in a local square. Concerned residents discuss the increasing population and changing consumer habits of the residents."
+        id="dialog-root"
+        opciones={[
+          {
+            letra: "A",
+            texto:
+              "Implement sustainable agricultural practices, even if this will result in low agricultural production.",
+          },
+          {
+            letra: "B",
+            texto:
+              "To get more crops you start using pesticides to protect your plants from pests",
+          },
+        ]}
+      />
+      <DialogBox
+        pregunta="The transition to sustainable practices is reducing agricultural production, as soils and crops must adapt"
+        id="dialog-A"
+        opciones={[
+          {
+            letra: "AA",
+            texto: "Continue the transition, despite the problems",
+          },
+          {
+            letra: "AB",
+            texto:
+              "Opt for intensive agriculture, generating more agricultural production",
+          },
+        ]}
+      />
+	  
+      <DialogBox
+        pregunta="You don't use pesticides on crops, but you still have the problem of low crop production."
+        id="dialog-AB"
+        opciones={[
+          { letra: "ABA", texto: "You use nutrient-rich agricultural fertilizers" },
+          { letra: "ABB", texto: "Using crop varieties adapted to local soil and climatic conditions, taking longer compared to other methods" },
+        ]}
+      />
+      <DialogBox
+        pregunta="You have had a great harvest. However, on a nearby beach this excess of nutrients has caused algae blooms. "
+        id="dialog-ABA"
+        opciones={[
+          { letra: "ABAA", texto: "You don't give it importance, algae are plants, they won't do any harm." },
+          { letra: "ABAB", texto: "You stop using it, even though you will have production problems " },
+        ]}
+      />
+
+
+
+
+	  <DialogBox
+	  pregunta="You don't use pesticides on crops, but you still have the problem of low crop production."
+	  id="dialog-ABB"
+	  opciones={[
+		{ letra: "ABA", texto: "You use nutrient-rich agricultural fertilizers" },
+		{ letra: "ABB", texto: "Using crop varieties adapted to local soil and climatic conditions, taking longer compared to other methods" },
+	  ]}
+	/>
+
+
+
+
+
+      <DialogBox
+        pregunta="Pesticides are beginning to affect water and soil"
+        id="dialog-B"
+        opciones={[
+          {
+            letra: "BA",
+            texto:
+			"You don't give it importance, it's more important to take care of the plants",
+          },
+          { letra: "BB", texto: "You stop their usp, risking the crops" },
+        ]}
+      />
+      <DialogBox
+        pregunta="Pregunta terciaria de AB"
+        id="dialog-AB"
+        opciones={[
+          { letra: "ABA", texto: "Opción A-B-A" },
+          { letra: "ABB", texto: "Opción A-B-B" },
+        ]}
+      />
+      <CharacterBox />
+    </div>
+  </div>
 </Layout>
 <script is:inline>
 //Inicialmente todos se ocultan menos el root
@@ -82,14 +169,14 @@ document.querySelectorAll('[id^="dialog-"]').forEach((dialog) => {
 	}
 });
 
-function reset(){
+function reset() {
 	initialDialog.classList.remove("hidden");
-	initialDialog.classList.add("block")
-	document.querySelectorAll('[id^="dialog-"]').forEach((dialog) => {	
-	if (dialog !== initialDialog) {
-		dialog.classList.remove("block");
-		dialog.classList.add("hidden");
-	}
+	initialDialog.classList.add("block");
+	document.querySelectorAll('[id^="dialog-"]').forEach((dialog) => {
+		if (dialog !== initialDialog) {
+			dialog.classList.remove("block");
+			dialog.classList.add("hidden");
+		}
 	});
 }
 
@@ -99,42 +186,37 @@ document.addEventListener("showNextDialog", (event) => {
 	nextDialog = document.getElementById(
 		`dialog-${event.detail.selectedOption}`
 	);
-	nextDialog.classList.remove("hidden");
-	nextDialog.classList.add("block");
-	  // Disparar el evento para iniciar la animación
-		document.dispatchEvent(new CustomEvent("showNextDialog"));
-});
+    nextDialog.classList.remove("hidden");
+    nextDialog.classList.add("block");
+    // Disparar el evento para iniciar la animación
+    document.dispatchEvent(new CustomEvent("showNextDialog"));
+  });
 
-const playPauseButton = document.getElementById('playButton');
-const audio = document.getElementById('audio');
-const playPauseIcon = document.getElementById('playPauseIcon');
+  const playPauseButton = document.getElementById("playButton");
+  const audio = document.getElementById("audio");
+  const playPauseIcon = document.getElementById("playPauseIcon");
 
+  // Variable para verificar si la música está reproduciéndose
+  let isPlaying = false;
 
-// Variable para verificar si la música está reproduciéndose
-let isPlaying = false;
-
-const toggleIcon = () => {
+  const toggleIcon = () => {
     if (isPlaying) {
-        playPauseIcon.src = "imgs/icons/volume-2.svg";  // Cambiar a la imagen de Pausa
-        playPauseIcon.alt = "Mute";
+      playPauseIcon.src = "imgs/icons/volume-2.svg"; // Cambiar a la imagen de Pausa
+      playPauseIcon.alt = "Mute";
     } else {
-        playPauseIcon.src = "imgs/icons/volume-x.svg";  // Cambiar a la imagen de Play
-        playPauseIcon.alt = "Play";
+      playPauseIcon.src = "imgs/icons/volume-x.svg"; // Cambiar a la imagen de Play
+      playPauseIcon.alt = "Play";
     }
-};
+  };
 
-
-
-// Evento al hacer clic en el botón
-playPauseButton.addEventListener('click', () => {
+  // Evento al hacer clic en el botón
+  playPauseButton.addEventListener("click", () => {
     if (isPlaying) {
-        audio.pause();  // Pausar la música
+      audio.pause(); // Pausar la música
     } else {
-        audio.play();  // Reproducir la música
+      audio.play(); // Reproducir la música
     }
-    isPlaying = !isPlaying;  // Alternar el estado de reproducción
-	toggleIcon();  // Cambiar la imagen
-
-});
-
+    isPlaying = !isPlaying; // Alternar el estado de reproducción
+    toggleIcon(); // Cambiar la imagen
+  });
 </script>
