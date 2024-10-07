@@ -1,16 +1,17 @@
 ---
-const { id, estado, mensaje} = Astro.props;
+const { id, estado, mensaje, fondo} = Astro.props;
 ---
 {(estado === 'bueno')?(
-  <div id={`${id}`} class="absloute flex justify-center items-center ml-auto mr-auto">
-  <img class="absolute h-[700px] w-[800px]" src={`/imgs/nube-${estado}.png`} alt="">
-    <span class="absolute w-96 text-black text-center">
-      {`${mensaje}`} 
-    </span>
-  </img>
-</div>	
+    <img id={`fondo-${id}`} class="bg-cover bg-center absolute w-screen h-screen" src={`${fondo}`}/>
+    <div id={`${id}`} class="absloute flex justify-center items-center ml-auto mr-auto">
+      <img class="absolute h-[700px] w-[800px]" src={`/imgs/nube-${estado}.png`} alt=""/>
+      <span class="absolute w-96 text-black text-center">
+        {`${mensaje}`} 
+      </span>
+    </div>	
 ):(
-<div id={`${id}`} class="absloute flex justify-center items-center ml-auto mr-auto">
+    <img id={`fondo-${id}`} class="bg-cover bg-center absolute w-screen h-screen" src={`${fondo}`}/>
+    <div id={`${id}`} class="absloute flex justify-center items-center ml-auto mr-auto">
 			<img class="absolute h-[550px] w-[950px]" src={`/imgs/nube-${estado}.png`} alt="">
 				<span class="absolute w-[450px] h-36 text-white text-center">
 					{`${mensaje}`} 
@@ -18,3 +19,25 @@ const { id, estado, mensaje} = Astro.props;
 			</img>
 		</div>	
 )}
+<script is:inline define:vars={{ id }}>
+  const final = document.getElementById(id);
+  const fondo = document.getElementById(`fondo-${id}`);
+
+  // Función para sincronizar el estado de visibilidad de ambos elementos
+const sincronizarElementos = () => {
+  if (final.classList.contains("block")) {
+    fondo.classList.remove("hidden");
+    fondo.classList.add("block");
+  } else if (final.classList.contains("hidden")) {
+    fondo.classList.remove("block");
+    fondo.classList.add("hidden");
+  }
+};
+
+// Crear un MutationObserver para detectar cambios en el atributo 'class' del final
+const observer = new MutationObserver(sincronizarElementos);
+observer.observe(final, { attributes: true, attributeFilter: ['class'] });
+
+// Sincronizar el estado inicial al cargar la página
+sincronizarElementos();
+</script>
